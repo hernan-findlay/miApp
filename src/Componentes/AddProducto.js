@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, View, Text, TouchableOpacity } from 'react-native';
-import ButtonPrimary from './src/Componentes/ButtonPrimary';
+import ButtonPrimary from './ButtonPrimary'; 
+
+
 
 const AddProducto = ({ taskTitle, onHandlerTitle, addTask }) => {
   const [quantity, setQuantity] = useState(0);

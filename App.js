@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Dimensions, Keyboard, Text } from 'react-native';
 import uuid from 'react-native-uuid';
-import ModalDeleteProducto from './src/componentes/ModalDeleteProducto';
+import ModalDeleteProducto from './src/Componentes/ModalDeleteProducto';
 import AddProducto from './src/Componentes/AddProducto';
-import ListProducto from './src/componentes/ListProducto';
+import ListProducto from './src/Componentes/ListProducto';
 
 
 
