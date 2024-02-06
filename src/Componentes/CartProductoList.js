@@ -7,9 +7,9 @@ const CartProductoList = ({item,onHandlerModaDelete,screenWidth,updateTaskComple
   return (
             <View style={[styles.taskCard,{width:screenWidth -60,}]}>
                 <Text style={styles.text}>Creacion: {item.createAt}</Text>
-                <Text style={styles.text}>Actuliazacion: {item.updateAt}</Text>
+                
                 <Text style={styles.text}>Titulo: {item.title}</Text>
-                <Text style={styles.text}>Descripcion: {item.description}</Text>
+                <Text style={styles.text}>Cantidad: {quantity}</Text> 
                 <View style={styles.completedContanier}>
                     <Switch
                         value={item.completed}
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
       },
       text:{
         width:"100%",
-        color:"white",
+        color:"black",
         fontSize:18
       },
       completedContanier:{
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         gap:15
     },
     textCompleted:{
-        color:"white",
+        color:"black",
         fontSize:16,
         fontWeight:"bold"
     }

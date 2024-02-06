@@ -24,8 +24,8 @@ const AddProducto = ({ taskTitle, onHandlerTitle, addTask }) => {
       <TextInput
         value={taskTitle}
         onChangeText={onHandlerTitle}
-        placeholder="Ingresar titulo"
-        placeholderTextColor="white"
+        placeholder="Ingresar producto"
+        placeholderTextColor="black"
         maxLength={25}
         style={styles.input}
       />
@@ -33,7 +33,10 @@ const AddProducto = ({ taskTitle, onHandlerTitle, addTask }) => {
         <TouchableOpacity onPress={decrementQuantity} style={styles.quantityButton}>
           <Text style={styles.quantityButtonText}>-</Text>
         </TouchableOpacity>
-        <Text style={styles.quantityText}>{quantity}</Text>
+        <Text 
+          style={styles.quantityText}
+          value={quantity}>
+          </Text>
         <TouchableOpacity onPress={incrementQuantity} style={styles.quantityButton}>
           <Text style={styles.quantityButtonText}>+</Text>
         </TouchableOpacity>
@@ -58,12 +61,12 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: 'white',
+    borderColor: 'red',
     borderRadius: 5,
     padding: 10,
     marginBottom: 10,
     width: '80%',
-    color: 'white',
+    color: 'black',
   },
   quantityContainer: {
     flexDirection: 'row',
@@ -77,12 +80,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   quantityButtonText: {
-    color: 'white',
+    color: 'black',
     fontSize: 18,
     fontWeight: 'bold',
   },
   quantityText: {
-    color: 'white',
+    color: 'black',
     fontSize: 18,
     fontWeight: 'bold',
     paddingHorizontal: 10,
