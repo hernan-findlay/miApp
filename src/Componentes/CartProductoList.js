@@ -1,28 +1,20 @@
-import { StyleSheet, Text, View,Switch} from 'react-native'
-import React from 'react'
-import ButtonPrimary from './ButtonPrimary'
+import { StyleSheet, Text, View, Switch } from 'react-native';
+import React from 'react';
+import ButtonPrimary from './ButtonPrimary';
 
-
-const CartProductoList = ({item,onHandlerModaDelete,screenWidth,updateTaskCompleted}) => {
+const CartProductoList = ({ item, onHandlerModaDelete, screenWidth, updateTaskCompleted, quantity }) => {
   return (
-            <View style={[styles.taskCard,{width:screenWidth -60,}]}>
-                <Text style={styles.text}>Creacion: {item.createAt}</Text>
-                
-                <Text style={styles.text}>Titulo: {item.title}</Text>
-                <Text style={styles.text}>Cantidad: {quantity}</Text> 
-                <View style={styles.completedContanier}>
-                    <Switch
-                        value={item.completed}
-                        onValueChange={() => updateTaskCompleted(item.id)}
-                    />
-                    <Text style={styles.textCompleted}>{item.completed ? "Completada" : "Pendiente" }</Text>
-                </View>
-                <ButtonPrimary title='DEL' onPress={() => onHandlerModaDelete(item)} />
-            </View>
-  )
-}
+    <View style={[styles.taskCard, { width: screenWidth - 60 }]}>
+      <Text style={styles.text}>Creacion: {item.createAt}</Text>
+      <Text style={styles.text}>Titulo: {item.title}</Text>
+      <Text style={styles.text}>Cantidad: {quantity}</Text> {/* Muestra la cantidad aquí */}
+      
+      <ButtonPrimary title='Borrar' onPress={() => onHandlerModaDelete(item)} />
+    </View>
+  );
+};
 
-export default CartProductoList
+export default CartProductoList;
 
 const styles = StyleSheet.create({
     taskCard:{
@@ -39,13 +31,7 @@ const styles = StyleSheet.create({
         color:"black",
         fontSize:18
       },
-      completedContanier:{
-        width:"100%",
-        flexDirection:"row",
-        alignItems:"center",
-        justifyContent:"flex-start",
-        gap:15
-    },
+     
     textCompleted:{
         color:"black",
         fontSize:16,

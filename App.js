@@ -6,39 +6,32 @@ import AddProducto from './src/Componentes/AddProducto';
 import ListProducto from './src/Componentes/ListProducto';
 
 
-
 const App = () => {
-
   const [modalVisible, setModalVisible] = useState(false);
   const [taskSelected, setTaskSelected] = useState({});
-  const [taskTitle, setTaskTitle] = useState("");
-  const [taskDescripcion, setTaskDescription] = useState("");
+  const [taskTitle, setTaskTitle] = useState('');
   const [tasks, setTasks] = useState([]);
+  const [quantity, setQuantity] = useState(0);
   const screenWidth = Dimensions.get('window').width;
 
   const addTask = () => {
-
     const newTask = {
       id: uuid.v4(),
       createAt: new Date().toLocaleString(),
       updateAt: new Date().toLocaleString(),
       completed: false,
       title: taskTitle,
-      description: taskDescripcion,
+      quantity: quantity,
     };
 
     setTasks([...tasks, newTask]);
-    setTaskTitle("");
-    setTaskDescription("");
+    setTaskTitle('');
+    setQuantity(0);
     Keyboard.dismiss();
   };
 
   const onHandlerTitle = (t) => {
     setTaskTitle(t);
-  };
-
-  const onHandlerDescription = (t) => {
-    setTaskDescription(t);
   };
 
   const onHandlerModaDelete = (task) => {
@@ -47,34 +40,38 @@ const App = () => {
   };
 
   const deleteTask = () => {
-    setTasks(tasks.filter(task => task.id !== taskSelected.id));
+    setTasks(tasks.filter((task) => task.id !== taskSelected.id));
     setModalVisible(!modalVisible);
   };
 
   const updateTaskCompleted = (id) => {
-    setTasks(tasks.map(task => {
+    setTasks(tasks.map((task) => {
       if (task.id === id) return { ...task, ...{ completed: !task.completed } };
       return task;
     }));
   };
 
   return (
-    <View style={styles.container} >
-      <Text style={styles.titulo} >Listado de compras</Text>
+    <View style={styles.container}>
+      <View style={styles.titulo}><Text >Listado de compras</Text></View>
+
       <AddProducto
         taskTitle={taskTitle}
         onHandlerTitle={onHandlerTitle}
-        taskDescripcion={taskDescripcion}
-        onHandlerDescription={onHandlerDescription}
         addTask={addTask}
+        quantity={quantity}
+        setQuantity={setQuantity}
       />
-      <ListProducto // Corregido aquí
+
+      <ListProducto
         tasks={tasks}
         onHandlerModaDelete={onHandlerModaDelete}
         screenWidth={screenWidth}
         updateTaskCompleted={updateTaskCompleted}
+        quantity={quantity}
       />
-      <ModalDeleteProducto // Corregido aquí
+
+      <ModalDeleteProducto
         modalVisible={modalVisible}
         taskSelected={taskSelected}
         deleteTask={deleteTask}
@@ -88,11 +85,13 @@ export default App;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F2E4F6",
+    backgroundColor: "#2E86C1",
     flex: 1,
-    paddingTop: 30
+    paddingTop: 30,
+      titulo: {
+      justifyContent: "center",   
+      backgroundColor: "red"
+      }
   },
-  titulo: {
-
-  }
+  
 });

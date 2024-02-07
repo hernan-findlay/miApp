@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, Text, TouchableOpacity } from 'react-native';
-import ButtonPrimary from './ButtonPrimary'; 
-
-
+import { StyleSheet, TextInput, View, Text, TouchableOpacity, Button } from 'react-native';
 
 const AddProducto = ({ taskTitle, onHandlerTitle, addTask }) => {
   const [quantity, setQuantity] = useState(0);
-
+  
   const incrementQuantity = () => {
     if (quantity < 20) {
       setQuantity(quantity + 1);
@@ -33,20 +30,15 @@ const AddProducto = ({ taskTitle, onHandlerTitle, addTask }) => {
         <TouchableOpacity onPress={decrementQuantity} style={styles.quantityButton}>
           <Text style={styles.quantityButtonText}>-</Text>
         </TouchableOpacity>
-        <Text 
-          style={styles.quantityText}
-          value={quantity}>
-          </Text>
+        <Text style={styles.quantityText}>{quantity}</Text> {/* Aquí mostramos el valor de quantity */}
         <TouchableOpacity onPress={incrementQuantity} style={styles.quantityButton}>
           <Text style={styles.quantityButtonText}>+</Text>
         </TouchableOpacity>
       </View>
-      <ButtonPrimary title="Agregar Producto" onPress={() => addTask(quantity)} />
+      <Button title="Agregar Producto" onPress={() => addTask(quantity)} />
     </View>
   );
 };
-
-
 
 export default AddProducto;
 
