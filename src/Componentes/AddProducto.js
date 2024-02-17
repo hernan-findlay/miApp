@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import { StyleSheet, TextInput, View, Text, TouchableOpacity, Button } from 'react-native';
 
 const AddProducto = ({ taskTitle, onHandlerTitle, addTask }) => {
-  const [quantity, setQuantity] = useState(0);
+  
+  const [contador, setContador] = useState(0);
   
   const incrementQuantity = () => {
-    if (quantity < 20) {
-      setQuantity(quantity + 1);
+    if (contador < 20) {
+      setContador(contador + 1);
     }
   };
 
   const decrementQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
+    if (contador > 0) {
+      setContador(contador - 1);
     }
   };
 
@@ -30,12 +31,12 @@ const AddProducto = ({ taskTitle, onHandlerTitle, addTask }) => {
         <TouchableOpacity onPress={decrementQuantity} style={styles.quantityButton}>
           <Text style={styles.quantityButtonText}>-</Text>
         </TouchableOpacity>
-        <Text style={styles.quantityText}>{quantity}</Text> {/* Aquí mostramos el valor de quantity */}
+        <Text style={styles.quantityText}>{contador}</Text> 
         <TouchableOpacity onPress={incrementQuantity} style={styles.quantityButton}>
           <Text style={styles.quantityButtonText}>+</Text>
         </TouchableOpacity>
       </View>
-      <Button title="Agregar Producto" onPress={() => addTask(quantity)} />
+      <Button title="Agregar Producto" onPress={() => addTask()} />
     </View>
   );
 };

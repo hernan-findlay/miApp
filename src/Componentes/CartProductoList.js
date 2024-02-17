@@ -2,12 +2,14 @@ import { StyleSheet, Text, View, Switch } from 'react-native';
 import React from 'react';
 import ButtonPrimary from './ButtonPrimary';
 
-const CartProductoList = ({ item, onHandlerModaDelete, screenWidth, updateTaskCompleted, quantity }) => {
+const CartProductoList = ({ item, onHandlerModaDelete, screenWidth, updateTaskCompleted, contador }) => {
+  
+  console.log(contador)
   return (
     <View style={[styles.taskCard, { width: screenWidth - 60 }]}>
       <Text style={styles.text}>Creacion: {item.createAt}</Text>
       <Text style={styles.text}>Titulo: {item.title}</Text>
-      <Text style={styles.text}>Cantidad: {quantity}</Text> {/* Muestra la cantidad aquí */}
+      <Text style={styles.text}>Cantidad: {contador}</Text> 
       
       <ButtonPrimary title='Borrar' onPress={() => onHandlerModaDelete(item)} />
     </View>
@@ -32,9 +34,5 @@ const styles = StyleSheet.create({
         fontSize:18
       },
      
-    textCompleted:{
-        color:"black",
-        fontSize:16,
-        fontWeight:"bold"
-    }
+    
 })

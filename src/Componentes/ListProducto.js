@@ -2,20 +2,22 @@ import { StyleSheet, Text, View,FlatList,Button } from 'react-native'
 import React from 'react'
 import CartProductoList from './CartProductoList'
 
-const ListProducto = ({tasks,onHandlerModaDelete,screenWidth,updateTaskCompleted}) => {
+const ListProducto = ({tasks,onHandlerModaDelete,screenWidth,updateTaskCompleted,handlerTaskUpdateSelected, contador}) => {
 
+  
   return (
     <View style={styles.tasksContainer}>
         <FlatList
-        horizontal={true}
+        vertical={true}
         pagingEnabled={true}
         data={tasks}
         keyExtractor={item => item.id}
         renderItem={({item})=>(<CartProductoList 
-                                    item={item} 
-                                    onHandlerModaDelete={onHandlerModaDelete}
-                                    screenWidth={screenWidth}
-                                    updateTaskCompleted={updateTaskCompleted}
+                                item={{ ...item, contador: item.contador }}
+                                onHandlerModaDelete={onHandlerModaDelete}
+                                screenWidth={screenWidth}
+                                contador={contador}
+                                handlerTaskUpdateSelected={handlerTaskUpdateSelected}
                                     />)}
         />
   

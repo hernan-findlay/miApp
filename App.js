@@ -11,22 +11,21 @@ const App = () => {
   const [taskSelected, setTaskSelected] = useState({});
   const [taskTitle, setTaskTitle] = useState('');
   const [tasks, setTasks] = useState([]);
-  const [quantity, setQuantity] = useState(0);
+  const [contador, setContador] = useState(); 
   const screenWidth = Dimensions.get('window').width;
 
   const addTask = () => {
     const newTask = {
       id: uuid.v4(),
       createAt: new Date().toLocaleString(),
-      updateAt: new Date().toLocaleString(),
       completed: false,
       title: taskTitle,
-      quantity: quantity,
+      contador: contador, 
     };
 
     setTasks([...tasks, newTask]);
     setTaskTitle('');
-    setQuantity(0);
+    setContador(); 
     Keyboard.dismiss();
   };
 
@@ -53,14 +52,16 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.titulo}><Text >Listado de compras</Text></View>
+      <View styles={styles.titu} >
+        <Text style={styles.titulo} >Listado de compras</Text>
+      </View>
 
       <AddProducto
         taskTitle={taskTitle}
         onHandlerTitle={onHandlerTitle}
         addTask={addTask}
-        quantity={quantity}
-        setQuantity={setQuantity}
+        contador={contador} 
+        setContador={setContador} 
       />
 
       <ListProducto
@@ -68,7 +69,8 @@ const App = () => {
         onHandlerModaDelete={onHandlerModaDelete}
         screenWidth={screenWidth}
         updateTaskCompleted={updateTaskCompleted}
-        quantity={quantity}
+        contador={contador} 
+        setContador={setContador}
       />
 
       <ModalDeleteProducto
@@ -88,10 +90,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#2E86C1",
     flex: 1,
     paddingTop: 30,
-      titulo: {
-      justifyContent: "center",   
-      backgroundColor: "red"
-      }
+    
+    },
+    titu:{
+      alignItems:"center",  
+    },
+
+    titulo: {
+     
+    backgroundColor: "red",
+    fontSize:30
+    }
   },
   
-});
+);
